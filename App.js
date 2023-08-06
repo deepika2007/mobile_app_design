@@ -1,10 +1,12 @@
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import CustomComponent from './src/screens/customComponent';
+import NavigateContainer from './src/routes';
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <CustomComponent />
+      <NavigateContainer />
+      {/* <CustomComponent /> */}
     </View>
   );
 }
