@@ -1,16 +1,8 @@
-import { createSlice } from "@reduxjs/toolkit"
+// import { combineReducers } from "redux";
+// import todoReducer from "./todoSlick";
 
-const messageSlice = createSlice({
-    name: "message",
-    initialState: {
-        todos: []
-    },
-    reducers: {
-        setMessage(state, action) {
-            state.todos = action.payload
-        }
-    }
-})
+// const rootReducer = combineReducers({
+//     todos: todoReducer,
+// });
 
-export const { setMessage } = messageSlice.actions
-export default messageSlice.reducer
+// export default rootReducer;
