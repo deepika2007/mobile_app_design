@@ -1,12 +1,13 @@
 import { useState } from 'react';
-import { FlatList, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
+import { FlatList, SafeAreaView, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 import { addTodo } from '../redux/reducers/todoSlick';
 
 export default function CustomComponent() {
     const [todo, setTodo] = useState('');
     const dispatch = useDispatch();
-    const state = useSelector((state) => console.log(state))
+    const state = useSelector((state) => state.todos)
+    console.log('state', state)
     const handleAdd = () => {
         if (todo !== '') {
             console.log('todo', todo)
@@ -21,6 +22,13 @@ export default function CustomComponent() {
             <Text style={styles.heading}>Native Todo</Text>
             <TextInput style={styles.textField} onChangeText={(e) => setTodo(e)} placeholder='Add todo' />
             <TouchableOpacity style={styles.addButton} onPress={handleAdd}>Add</TouchableOpacity>
+
+            <SafeAreaView style={styles.container}>
+                <FlatList
+                    keyExtractor={item => item.id}
+                    data={state} renderItem={({ item }) => <Text>{item.text}</Text>}
+                />
+            </SafeAreaView>
         </View>
     );
 }
